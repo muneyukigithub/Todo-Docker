@@ -1,3 +1,5 @@
+# settings_devは開発環境用
+
 from .settings import * 
 from .settings_local import *
 
@@ -30,11 +32,11 @@ CSRF_TRUSTED_ORIGINS = ["localhost", "127.0.0.1"]
 # DB設定
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # 変更
-        'NAME': 'TodoListDB', # プロジェクトで使用するデータベース名
-        'USER': 'root', # パソコンにインストールしたMySQLのユーザー名
-        'PASSWORD': 'password', # 同上。そのパスワード
-        'HOST': 'db',
+        'ENGINE': 'django.db.backends.mysql', # mysqlを指定
+        'NAME': 'TodoListDB', # 開発用データベース名
+        'USER': 'root', # 開発用ユーザー名
+        'PASSWORD': 'password', # 開発用パスワード
+        'HOST': 'db',# Dockerのサービス名
         'PORT': '3306',
     }
 }
