@@ -14,7 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "webpack serve --mode development --port 3000",
+    "start": "webpack serve --host 0.0.0.0 --port 3000 --config webpack.config.js",
     "start-react": "react-scripts start",
     "start-https": "webpack serve --https true --https-cert localhost.pem —http-key localhost-key.pem",
     "build": "webpack --mode=production",

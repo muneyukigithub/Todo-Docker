@@ -10,7 +10,8 @@ from rest_framework.response import Response
 from ..authentication import CookieHandlerJWTAuthentication
 from ..models import CustomUser
 from ..serialyzer import UserSerializer
-from django.conf import settings
+from Todo_DRF.settings import settings_dev as settings
+
 from logging import getLogger,config
 config.dictConfig(settings.LOGGING)
 logger = getLogger(__name__)
@@ -37,7 +38,7 @@ class UserCreate(CreateAPIView):
     serializer_class = UserSerializer
 
     def create(self, request, *args, **kwargs):
-
+        logger.debug(("request.data:",request.data))
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
