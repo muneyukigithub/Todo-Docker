@@ -1,3 +1,5 @@
+
+# settingsは共通設定
 """
 Django settings for Todo_DRF project.
 
