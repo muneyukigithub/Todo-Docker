@@ -5,7 +5,11 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.hashers import make_password
 from rest_framework.exceptions import APIException
 from django.db import transaction
+from Todo_DRF.settings import settings_dev as settings
 
+from logging import getLogger,config
+config.dictConfig(settings.LOGGING)
+logger = getLogger(__name__)
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -24,11 +28,13 @@ class UserSerializer(serializers.ModelSerializer):
         if unhashed_password is not None:
             new_user.set_password(unhashed_password)
         new_user.save()
+        logger.info("user created success: %s", new_user)
+
         return new_user
 
     def update(self, pre_update_user, validated_data):
 
-        # 更新されるユーザーのフィールドを入力データの値に書き換えていく
+        # 更新されるユーザーのフィールドを入力データの値に書き換える
         for field_name, value in validated_data.items():
             if field_name == 'password':
                 pre_update_user.set_password(value)

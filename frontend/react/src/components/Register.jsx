@@ -19,18 +19,17 @@ const Register = () => {
   const [userValid, setUserValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
   const [password2Valid, setPassword2Valid] = useState(true);
-  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [successOpen, setSuccessOpen] = useState(false);
   const [failOpen, setfailOpen] = useState(false);
 
   const handleSubmit = async (e) => {
-    console.log("handleSubmit")
 
     // ユーザー登録 (情報キーと代入変数名が同じとき、キーを省略できる)
     const sendData = {
-      user,
+      email,
       password,
       password2
     }
@@ -50,7 +49,7 @@ const Register = () => {
   }
 
   const handleChangeEmail = (e) => {
-    setUser(e.target.value);
+    setEmail(e.target.value);
     setUserValid(e.target.validity.valid)
   }
 
