@@ -1,18 +1,16 @@
+
+#DB
 mysql_volume/
 db.sqlite3
-__pycache__
 
 
 ##バックエンド
 settings_local.py
+__pycache__
 
 
 ## フロントエンド
-
-# dependencies
 node_modules/
-
-# production
 /build
 
 # misc

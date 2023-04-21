@@ -29,6 +29,4 @@ class CookieHandlerJWTAuthentication(JWTAuthentication):
                 access_token=access_token,
             )
 
-        
-
         return super().authenticate(request)
