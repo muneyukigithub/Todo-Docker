@@ -38,7 +38,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: TodoListDB
-      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_USER: user
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       TZ: 'Asia/Tokyo'
     healthcheck:
@@ -53,7 +53,7 @@ services:
           "localhost",
           "-u",
           "root",
-          "-p${MYSQL_PASSWORD}"
+          "-p${MYSQL_ROOT_PASSWORD}"
         ]
       timeout: 20s #ヘルスチェックコマンドの制限時間
       interval: 5s #リトライ間隔時間
