@@ -30,7 +30,8 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - DJANGO_SETTINGS_MODULE=Todo_DRF.settings.settings_dev
     depends_on:
-      - db
+      db:
+        condition: service_healthy
   db:
     container_name: db-mysql
     expose:
@@ -43,8 +44,23 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: TodoListDB
       MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       TZ: 'Asia/Tokyo'
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p${MYSQL_PASSWORD}"
+        ]
+      timeout: 10s
+      interval: 5s
+      retries: 10
     volumes:
       - ./mysql/mysql_volume:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
