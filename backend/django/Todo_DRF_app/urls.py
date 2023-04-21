@@ -15,7 +15,6 @@ urlpatterns = [
     # ユーザー
     path("user/",UserRetrieve.as_view()),
     path("usercreate/",UserCreate.as_view()),
-    # path("userupdate/",UserUpdate.as_view()),
     path("userdelete/",UserDestroy.as_view()),
 
     # 認証

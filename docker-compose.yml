@@ -5,9 +5,6 @@ services:
     expose:
       - "80"
     build: ./web/nginx/.
-    # volumes:
-    #   - ./frontend/build:/usr/share/nginx/html/
-    # - static_volume:/code/staticfiles # <-- bind the static volume
     ports:
       - "80:80"
     depends_on:
@@ -31,15 +28,13 @@ services:
       - DJANGO_SETTINGS_MODULE=Todo_DRF.settings.settings_dev
     depends_on:
       db:
-        condition: service_healthy
+        condition: service_healthy #DBのヘルスチェックが完了するまで待機
   db:
     container_name: db-mysql
     expose:
       - "3306"
     build: ./mysql/.
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    # ports:
-    #   - "3306"
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: TodoListDB
@@ -47,7 +42,9 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       TZ: 'Asia/Tokyo'
     healthcheck:
+      #ヘルスチェック
       test:
+        #ヘルスチェックの実行コマンド
         [
           "CMD",
           "mysqladmin",
@@ -58,9 +55,9 @@ services:
           "root",
           "-p${MYSQL_PASSWORD}"
         ]
-      timeout: 10s
-      interval: 5s
-      retries: 10
+      timeout: 20s #ヘルスチェックコマンドの制限時間
+      interval: 5s #リトライ間隔時間
+      retries: 5 #リトライ回数
     volumes:
       - ./mysql/mysql_volume:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
@@ -71,12 +68,10 @@ services:
     build: ./frontend/react/
     expose:
       - "3000"
-    # environment:
-    #   - REACT_APP_API_URL=http://localhost/api/v1
     working_dir: /code
     volumes:
-      - ./frontend/react:/code #フロントエンドアプリのコード
-      - node_modules:/code/node_modules #ボリュームマウント ※nodo_modulesが上書きされないために使用
+      - ./frontend/react:/code #アプリケーションコードのボリューム
+      - node_modules:/code/node_modules #node_modulesのボリューム ※nodo_modulesが上書きされないため
     command: npm run start
     depends_on:
       - backend
@@ -88,5 +83,4 @@ networks:
   frontend_network:
     driver: bridge
 volumes:
-  # static_volume:
   node_modules:
