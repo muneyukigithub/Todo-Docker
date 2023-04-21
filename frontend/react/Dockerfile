@@ -1,0 +1,8 @@
+FROM node:16-buster-slim
+ARG REACT_APP_API_URL
+ENV APP_ROOT /code
+WORKDIR ${APP_ROOT}
+COPY . ${APP_ROOT}
+RUN apt-get update 
+RUN npm ci
+EXPOSE 3000

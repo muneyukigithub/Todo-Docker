@@ -1,0 +1,5 @@
+FROM nginx:1.22.1-alpine
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY default.dev.conf /etc/nginx/conf.d
+

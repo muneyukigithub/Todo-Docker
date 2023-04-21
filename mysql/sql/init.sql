@@ -1,2 +1,3 @@
-cd ../sql
-touch init.sql
+GRANT ALL PRIVILEGES ON test_todoList.* TO 'user'@'%';
+
+FLUSH PRIVILEGES;
