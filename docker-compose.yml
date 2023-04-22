@@ -55,8 +55,8 @@ services:
           "root",
           "-p${MYSQL_ROOT_PASSWORD}"
         ]
-      timeout: 30s #ヘルスチェックコマンドの制限時間
-      interval: 10s #リトライ間隔時間
+      timeout: 40s #ヘルスチェックコマンドの制限時間
+      interval: 15s #リトライ間隔時間
       retries: 20 #リトライ回数
     volumes:
       - ./mysql/mysql_volume:/var/lib/mysql
