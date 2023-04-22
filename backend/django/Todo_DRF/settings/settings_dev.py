@@ -36,7 +36,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # mysqlを指定
         'NAME': 'TodoListDB', # 開発用データベース名
-        'USER': 'root', # 開発用ユーザー名
+        'USER': 'user', # 開発用ユーザー名
         'PASSWORD': 'password', # 開発用パスワード
         'HOST': 'db',# Dockerのサービス名
         'PORT': '3306',
