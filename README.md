@@ -1,32 +1,34 @@
 ## アプリケーションの概要
+Todoを管理するアプリケーションです。
 
-Todoを管理できるアプリケーションです。
+<p align="center">
+  <img src="./img/sampleimg1.png" width="738">
+</p>
 
 <ここに画像入れる>
 
 ## アプリケーションの機能一覧
-
-・Todo作成機能
-・Todo削除機能
-・Todo編集機能
-・Todo保存機能
-・ログイン機能
-・ログアウト機能
-・ユーザー作成機能
-・ユーザー退会機能
+* Todo作成機能
+* Todo削除機能
+* Todo編集機能
+* Todo保存機能
+* ログイン機能
+* ログアウト機能
+* ユーザー作成機能
+* ユーザー退会機能
 
 ## 使用技術
-フロントエンド
-・React.js
+### フロントエンド
+* React.js
 
-バックエンド
-・Django REST framework
+### バックエンド
+* Django REST framework
 
-インフラ
-・AWS(CloudFront,EC2,S3,RDS)
+### インフラ
+* AWS(CloudFront,EC2,S3,RDS)
 
-開発環境
-・Docker
+### 開発環境
+* Docker
 
 ## 開発環境(Docker)の動かし方
 
