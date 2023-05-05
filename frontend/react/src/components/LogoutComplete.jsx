@@ -4,28 +4,24 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const LogoutComplete = (props) => {
+export const LogoutComplete = () => {
     return (
         <Box
             sx={{
                 minHeight: '100vh',
                 backgroundColor: '#EEEEEE',
                 p: 5,
-                mt: 5
-            }}>
-
+                mt: 5,
+            }}
+        >
             <Typography>ログアウトが完了しました。</Typography>
 
-            <LogoutLink to="/">
-                {"ホームへ戻る"}
-            </LogoutLink>
-        </Box >
-    )
-}
-
-
+            <LogoutLink to="/">{'ホームへ戻る'}</LogoutLink>
+        </Box>
+    );
+};
 
 const LogoutLink = styled(RouterLink)`
-  text-decoration: none;
-  color:#1976d2
-`
+    text-decoration: none;
+    color: #1976d2;
+`;

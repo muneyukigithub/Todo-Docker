@@ -3,36 +3,33 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-
+import { Link as RouterLink } from 'react-router-dom';
 
 const UserDeactivateComplete = () => {
-
-    const location = useLocation();
     const username = location.state.username;
-
 
     return (
         <Box
             sx={{
                 minHeight: '100vh',
                 backgroundColor: '#EEEEEE',
-                p: 5
-            }}>
-
+                p: 5,
+            }}
+        >
             <Typography>ユーザー退会が完了しました。</Typography>
             <Typography gutterBottom>{username}</Typography>
             <Link
                 component={RouterLink}
-                to={"/main"}
+                to={'/main'}
                 color="primary"
-                variant='h6'
-                sx={{ textDecoration: "None", pt: 2 }}
-            >ホーム
+                variant="h6"
+                sx={{ textDecoration: 'None', pt: 2 }}
+            >
+                ホーム
             </Link>
             <CssBaseline />
-        </Box >
-    )
-}
+        </Box>
+    );
+};
 
-export default UserDeactivateComplete
+export default UserDeactivateComplete;

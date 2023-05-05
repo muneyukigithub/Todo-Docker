@@ -1,19 +1,19 @@
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.response import Response
-from django.conf import settings
-
+from Todo_DRF.settings import settings_dev as settings
 from logging import getLogger,config
 config.dictConfig(settings.LOGGING)
-logger = getLogger(__name__)
-
+logger_m = getLogger(__name__)
+logger = getLogger("django_file_logger")
 
 
 # JWTトークンを使用して認証するクラス
 class CookieHandlerJWTAuthentication(JWTAuthentication):
     def authenticate(self, request):
+
+
         # Cookieヘッダーからaccess_tokenを取得
         access_token = request.COOKIES.get("access_token")
-        logger.debug(access_token)
 
 
         if not access_token:
@@ -28,5 +28,7 @@ class CookieHandlerJWTAuthentication(JWTAuthentication):
                 header_type=settings.SIMPLE_JWT["AUTH_HEADER_TYPES"][0],
                 access_token=access_token,
             )
+
+        
 
         return super().authenticate(request)

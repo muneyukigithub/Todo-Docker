@@ -11,21 +11,17 @@ export const UserDeleteComplete = () => {
                 minHeight: '100vh',
                 backgroundColor: '#EEEEEE',
                 p: 5,
-                mt: 5
-            }}>
-
+                mt: 5,
+            }}
+        >
             <Typography>ユーザー削除が完了しました。</Typography>
 
-            <LogoutLink to="/">
-                {"ホームへ戻る"}
-            </LogoutLink>
-        </Box >
-    )
-}
-
-
+            <LogoutLink to="/">{'ホームへ戻る'}</LogoutLink>
+        </Box>
+    );
+};
 
 const LogoutLink = styled(RouterLink)`
-  text-decoration: none;
-  color:#1976d2
-`
+    text-decoration: none;
+    color: #1976d2;
+`;

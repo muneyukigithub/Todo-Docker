@@ -10,8 +10,7 @@ from rest_framework.response import Response
 from ..authentication import CookieHandlerJWTAuthentication
 from ..models import CustomUser
 from ..serialyzer import UserSerializer
-from Todo_DRF.settings import settings_dev as settings
-
+from django.conf import settings
 from logging import getLogger,config
 config.dictConfig(settings.LOGGING)
 logger = getLogger(__name__)
@@ -25,6 +24,8 @@ class UserRetrieve(RetrieveAPIView):
     lookup_field = 'id'
 
     def get(self, request, *args, **kwargs):
+        logger.debug(request.data)
+
         userid = request.GET.get("userid")
         if not userid:
             return Response({"detail": "ユーザIDが指定されていません"}, status=status.HTTP_400_BAD_REQUEST)
@@ -38,7 +39,7 @@ class UserCreate(CreateAPIView):
     serializer_class = UserSerializer
 
     def create(self, request, *args, **kwargs):
-        logger.debug(("request.data:",request.data))
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)

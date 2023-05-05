@@ -16,7 +16,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from Todo_DRF.settings import settings_dev as settings
 from ..authentication import CookieHandlerJWTAuthentication
 from ..models import CustomUser, Project, Task, TaskList
-from ..serialyzer import (ProjectDeserializer, ProjectSerializer,
+from ..serialyzer import (ProjectDeserializer, ProjectSerializer
                           )
 
 config.dictConfig(settings.LOGGING)
@@ -24,6 +24,7 @@ logger = getLogger(__name__)
 
 # プロジェクト情報を返すAPI
 class ProjectView(generics.RetrieveAPIView):
+    # serializer_class = ProjectDeserializer
     serializer_class = ProjectDeserializer
     queryset = Project.objects.all()
     lookup_field = 'project'

@@ -1,5 +1,3 @@
-
-# settingsは共通設定
 """
 Django settings for Todo_DRF project.
 
@@ -48,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'Todo_DRF_app.middleware.RequestLoggingMiddleware'
     # "drf_test_app.middleware.printHeader.printHeader",#自作ミドルウェア
 
 ]
@@ -134,3 +133,92 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("JWT",),
 }
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'django.server': {
+            '()': 'django.utils.log.ServerFormatter',
+            'format': '[%(server_time)s] %(message)s a',
+        },
+        'simple': {
+            'format': '%(levelname)s %(asctime)s %(module)s '
+                      '%(process)d %(thread)d %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            # 'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+         'file': {
+             "class":"logging.FileHandler",
+             "level":"DEBUG",
+             "filename":"file.log"
+         }
+    },
+    'loggers': {
+        'django_file_logger': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+             'propagate': False,
+         },
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    }
+}
+
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'django.server': {
+#             '()': 'django.utils.log.ServerFormatter',
+#             'format': '[%(server_time)s] %(message)s a',
+#         },
+#         'simple': {
+#             'format': '%(levelname)s %(asctime)s %(module)s '
+#                       '%(process)d %(thread)d %(message)s'
+#         },
+#     },
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             # 'filters': ['require_debug_true'],
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'simple',
+#         },
+#         # 'console_info': {
+#         #     'level': 'INFO',
+#         #     # 'filters': ['require_debug_true'],
+#         #     'class': 'logging.StreamHandler',
+#         #     'formatter': 'simple',
+#         # },
+#         # 'fileHandler': {
+#         #     "class":"logging.FileHandler",
+#         #     "level":"INFO",
+#         #     "formatter":"###",
+#         #     "filename":"###"
+#         # }
+#     },
+#     'loggers': {
+#         # 'django.server': {
+#         #     'handlers': ['django.server'],
+#         #     'level': 'INFO',
+#         #     'propagate': False,
+#         # },
+#         #追加
+#         '': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#             'propagate': False,
+#         },
+#     }
+# }

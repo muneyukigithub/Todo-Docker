@@ -103,7 +103,8 @@ class TaskList(models.Model):
     status = models.CharField(verbose_name="作業ステータス",max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    # project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='projectData')
 
     def __str__(self):
         return str(self.tasklist_id)
@@ -114,6 +115,6 @@ class Task(models.Model):
     tasktype = models.CharField(verbose_name="タスク分類",max_length=255)
     created_at = models.DateTimeField(verbose_name="作成日",auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    tasklist = models.ForeignKey(TaskList, on_delete=models.CASCADE)
+    tasklist = models.ForeignKey(TaskList, on_delete=models.CASCADE,related_name='tasklist')
     def __str__(self):
         return self.task

@@ -1,63 +1,64 @@
-import { CssBaseline } from '@mui/material'
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Front } from './Front'
-import { Header } from './Header'
-import { Islogin } from './Islogin'
-import { LogoutComplete } from './LogoutComplete'
-import { MainLayout } from './MainLayout'
-import NotFound from './NotFound'
-import RegistComplete from './RegistComplete'
-import Register from './Register'
-import SignIn from './Signin'
-import { UserProvider } from './UserContext'
-import UserDeactivateComplete from './UserDeactivateComplete'
-import { UserDeleteComplete } from './UserDeleteComplete'
+import { CssBaseline } from '@mui/material';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Front } from './Front';
+import { Header } from './Header';
+import { LogoutComplete } from './LogoutComplete';
+import { MainLayout } from './MainLayout';
+import NotFound from './NotFound';
+import RegistComplete from './RegistComplete';
+import Register from './Register';
+import SignIn from './Signin';
+import { UserProvider } from './UserContext';
+import { TaskListProvider } from './TaskListContext';
+import UserDeactivateComplete from './UserDeactivateComplete';
+import { UserDeleteComplete } from './UserDeleteComplete';
 
 const App = () => {
+    const drawerWidth = 400;
+    const headerHeight = 64;
 
-  const drawerWidth = 400;
-  const headerHeight = 64;
+    return (
+        <BrowserRouter>
+            <CssBaseline />
+            <TaskListProvider>
+                <UserProvider>
+                    <Header headerHeight={headerHeight} />
 
-  return (
-    <BrowserRouter>
-      <CssBaseline />
-      <UserProvider>
-        <Header headerHeight={headerHeight} />
+                    <Routes>
+                        {/* フロント画面 */}
+                        <Route path="/" element={<Front />} />
 
-        <Routes>
+                        {/* ログイン画面 */}
+                        <Route path="/login" element={<SignIn />} />
 
-          {/* フロント画面 */}
-          <Route path="/" element={<Front />} />
+                        {/* ログアウト完了画面 */}
+                        <Route path="/logoutcomplete" element={<LogoutComplete />} />
 
-          {/* ログイン画面 */}
-          <Route path="/login" element={<SignIn />} />
+                        {/* ユーザー登録画面 */}
+                        <Route path="/regist" element={<Register />} />
 
-          {/* ログアウト完了画面 */}
-          <Route path="/logoutcomplete" element={<LogoutComplete />} />
+                        {/* ユーザー登録完了画面 */}
+                        <Route path="/registcomplete" element={<RegistComplete />} />
 
-          {/* ユーザー登録画面 */}
-          <Route path="/regist" element={<Register />} />
+                        {/* ユーザー削除完了画面 */}
+                        <Route path="/userdeletecomplete" element={<UserDeleteComplete />} />
 
-          {/* ユーザー登録完了画面 */}
-          <Route path="/registcomplete" element={<RegistComplete />} />
+                        {/* ユーザー退会完了画面 */}
+                        <Route path="/UserDeactivateComplete" element={<UserDeactivateComplete />} />
 
-          {/* ユーザー削除完了画面 */}
-          <Route path="/userdeletecomplete" element={<UserDeleteComplete />} />
+                        {/* メイン画面 */}
+                        <Route
+                            path="/main"
+                            element={<MainLayout headerHeight={headerHeight} drawerWidth={drawerWidth} />}
+                        />
 
-          {/* ユーザー退会完了画面 */}
-          <Route path="/UserDeactivateComplete" element={<UserDeactivateComplete />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </UserProvider>
+            </TaskListProvider>
+        </BrowserRouter>
+    );
+};
 
-          {/* メイン画面 */}
-          <Route path="/main" element={<Islogin AuthSuccessComponent={<MainLayout headerHeight={headerHeight} drawerWidth={drawerWidth} />} AuthFaildComponent={<SignIn />} />} />
-
-          {/* not found画面 */}
-          <Route path="*" element={<NotFound />} />
-
-        </Routes>
-      </UserProvider>
-    </BrowserRouter>
-  )
-}
-
-export default App
+export default App;

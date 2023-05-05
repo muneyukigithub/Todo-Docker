@@ -4,62 +4,55 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import axios from './defaultaxios';
 import { useUser } from './UserContext';
 
 export default function SignIn() {
-
-    const [user, setUser] = useState("");
-    const userValidation = useRef();
-
-    const [password, setPassword] = useState("");
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
 
     const UserContext = useUser();
     const navigate = useNavigate();
 
     const handleChangeUser = (event) => {
-        setUser(event.target.value)
-    }
-
+        setUser(event.target.value);
+    };
 
     const handleChangePassword = (event) => {
-        setPassword(event.target.value)
-    }
-
+        setPassword(event.target.value);
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         // エラー処理のためcatchは必要
         try {
-            console.log(user, password)
-
-            const response = await axios.post("jwt_createtoken/", {
-                email: user,
-                password: password,
-            }, { headers: { "Content-Type": "application/json" } })
+            const response = await axios.post(
+                'jwt_createtoken/',
+                {
+                    email: user,
+                    password: password,
+                },
+                { headers: { 'Content-Type': 'application/json' } }
+            );
 
             if (response.status === 200) {
-                const response = await axios.get("/jwt_userinfo/")
-                const userinfo = response.data
-                userinfo && localStorage.setItem("userinfo", JSON.stringify(userinfo))
-                UserContext.setUser(userinfo)
-                navigate("/main")
+                const response = await axios.get('/jwt_userinfo/');
+                const userinfo = response.data;
+                userinfo && localStorage.setItem('userinfo', JSON.stringify(userinfo));
+                UserContext.setUser(userinfo);
+                navigate('/main');
             }
         } catch (error) {
-            setError(true)
-            console.log(error)
+            setError(true);
         }
-
-    }
+    };
 
     const handleClose = () => {
         setError(false);
@@ -79,10 +72,9 @@ export default function SignIn() {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    {"ログイン"}
+                    {'ログイン'}
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-
                     {/* {error && <Alert severity="error" onClose={() => { setError(false) }}>
                         ユーザ名かパスワードが間違っています
                     </Alert>
@@ -90,7 +82,10 @@ export default function SignIn() {
 
                     <TextField
                         onChange={handleChangeUser}
-                        inputProps={{ maxLength: 20, pattern: "^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*.)+[a-zA-Z]{2,}$" }}
+                        inputProps={{
+                            maxLength: 20,
+                            pattern: '^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*.)+[a-zA-Z]{2,}$',
+                        }}
                         margin="normal"
                         required
                         fullWidth
@@ -112,37 +107,25 @@ export default function SignIn() {
                         autoComplete="off"
                     />
 
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                        onSubmit={handleSubmit}
-                    >
-                        {"ログインする"}
+                    <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onSubmit={handleSubmit}>
+                        {'ログインする'}
                     </Button>
 
-                    <Box display={"flex"} justifyContent={"end"}>
-                        <RegisterLink to="/regist/" >
-                            {"新規登録する"}
-                        </RegisterLink>
+                    <Box display={'flex'} justifyContent={'end'}>
+                        <RegisterLink to="/regist/">{'新規登録する'}</RegisterLink>
                     </Box>
-
                 </Box>
             </Box>
             <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
-                <Alert elevation={6} variant={"filled"} severity={"error"}>
-                    {"ログインが失敗しました"}
+                <Alert elevation={6} variant={'filled'} severity={'error'}>
+                    {'ログインが失敗しました'}
                 </Alert>
             </Snackbar>
-
         </Container>
-
     );
 }
 
-
 const RegisterLink = styled(RouterLink)`
-  text-decoration: none;
-  color:#1976d2
-`
+    text-decoration: none;
+    color: #1976d2;
+`;

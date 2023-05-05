@@ -6,7 +6,6 @@ const webpack = require('webpack');
 // index.htmlにscriptタグを追加してくれるプラグイン
 const htmlPlugin = new HtmlWebpackPlugin({
   template: path.join(__dirname, "public", "index.html"),
-  // filename: "index.html",
 })
 
 // const DefinePlugin = new webpack.DefinePlugin({
@@ -15,11 +14,12 @@ const htmlPlugin = new HtmlWebpackPlugin({
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+  mode: 'development',
   performance: {
     maxEntrypointSize: 700000,
     maxAssetSize: 700000,
   },
-  entry: "./src/components/index.jsx", //ビルドするファイル
+  entry: "./src/components/index.jsx",
   output: {
     path: __dirname + '/dist',
     filename: 'bundle.js'
@@ -44,7 +44,8 @@ module.exports = {
       //   exclude: /node_modules/,  // ただし外部ライブラリは除く
       // },
       {
-        test: /\.(jpg|png)$/,
+        test: /\.(png|jpg|gif)$/i,
+        include: path.resolve(__dirname, 'public/images'),
         loader: 'url-loader'
       }
     ],
@@ -60,29 +61,19 @@ module.exports = {
       '.jsx', '.js',
     ]
   },
-  mode: 'development',
-  //   module: {
-  //   loaders: [
-  //           //loader
-  //     ]
-  // }
+
   devServer: {
-    // webpack-dev-serverの公開フォルダ
-    // contentBase: __dirname + '/dist',
     open: true,//ブラウザ立ち上げを自動化
     hot: true,//ホットリロードon
+    // https: {
+    //   key: fs.readFileSync('./localhost-key.pem'),
+    //   cert: fs.readFileSync('./localhost.pem'),
+    // },
     static: {
       directory: __dirname + '/public',//htmlやcssを配置したディレクトリをルートディレクトリとして指定
     },
-
-    host: 'localhost',
-    https: {
-      key: fs.readFileSync('./localhost-key.pem'),
-      cert: fs.readFileSync('./localhost.pem'),
-    },
   },
   plugins: [
-    // new HtmlWebpackPlugin()
     htmlPlugin,
     new Dotenv(),
     // new webpack.DefinePlugin({

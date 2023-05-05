@@ -69,6 +69,7 @@ class JWTCreateToken(jwt_views.TokenObtainPairView):
             samesite="None",
             secure=True,)
 
+
         return response
 
 
@@ -81,11 +82,11 @@ class JWTCreateToken(jwt_views.TokenObtainPairView):
 class JWTDestroyToken(jwt_views.TokenObtainPairView):
     def createJWTResponse(self):
         response = Response("削除ok",status=status.HTTP_204_NO_CONTENT)
-        response.delete_cookie('access_token')
-        response.delete_cookie('refresh_token')
+
+        response.delete_cookie('access_token',samesite='None')
+        response.delete_cookie('refresh_token',samesite='None')
         return response
  
-
     def get(self,request,*args,**kwargs):
         return self.createJWTResponse()
 
