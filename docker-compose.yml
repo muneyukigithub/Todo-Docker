@@ -55,9 +55,9 @@ services:
           "root",
           "-p${MYSQL_ROOT_PASSWORD}"
         ]
-      timeout: 40s #ヘルスチェックコマンドの制限時間
+      timeout: 60s #ヘルスチェックコマンドの制限時間
       interval: 15s #リトライ間隔時間
-      retries: 20 #リトライ回数
+      retries: 30 #リトライ回数
     volumes:
       - ./mysql/mysql_volume:/var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
