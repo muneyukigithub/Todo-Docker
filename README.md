@@ -2,10 +2,9 @@
 Todoを管理するアプリケーションです。
 
 <p align="center">
-  <img src="./img/sampleimg1.png" width="738">
+  <img src="./img/sampleimg1.png" width="500">
 </p>
 
-<ここに画像入れる>
 
 ## アプリケーションの機能一覧
 * Todo作成機能
@@ -31,6 +30,8 @@ Todoを管理するアプリケーションです。
 * Docker
 
 ## 開発環境(Docker)の動かし方
+
+### 
 
 
 

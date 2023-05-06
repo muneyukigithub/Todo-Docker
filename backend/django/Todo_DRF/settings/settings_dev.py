@@ -1,11 +1,10 @@
 from .settings import * 
 from .settings_local import *
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# 開発環境の場合はTrue
 DEBUG = True
 
 # サービスを提供するドメインの設定
-# ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = ["localhost","127.0.0.1"]
 
 
@@ -15,16 +14,17 @@ SESSION_COOKIE_SAMESITE = None
 
 # CookieのSecure属性の設定
 # TrueでHTTPSのみでCookieの送信が可能
-# SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = False
 
 # CORSで許可するオリジンのリスト
+# Access-Control-Allow-Originヘッダーがレスポンスに付与される
 CORS_ORIGIN_WHITELIST = ["http://localhost","http://127.0.0.1"]
 
 # CORSで全てのオリジンからのアクセスを許可
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 # オリジン間でCookieを送信するための設定
+# Access-Control-Allow-Credentialsヘッダーがレスポンスに付与される
 CORS_ALLOW_CREDENTIALS = True
 
 # CSRF保護において、リクエストを許可するオリジンのリスト
