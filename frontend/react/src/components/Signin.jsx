@@ -83,7 +83,7 @@ export default function SignIn() {
                     <TextField
                         onChange={handleChangeUser}
                         inputProps={{
-                            maxLength: 20,
+                            maxLength: 50,
                             pattern: '^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*.)+[a-zA-Z]{2,}$',
                         }}
                         margin="normal"

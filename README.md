@@ -52,5 +52,6 @@ http://localhost/
 ```
 
 ## 公開URL
-
-http://localhost/
+```
+https://d6g1fi1sxdwfd.cloudfront.net/
+```
