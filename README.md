@@ -45,8 +45,9 @@ docker-compose up --build
 ### Dockerコンテナの起動確認
 ```
 docker-compose ps
+Stateが"UP"になっていればOK
 ```
-<h6>Stateが"UP"になっていればOK</h6>
+
   
 ### アプリケーションの接続
 ```
