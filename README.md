@@ -4,8 +4,8 @@ Todoを管理するアプリケーションです。
 <p align="center">
   <img src="./img/sampleimg1.png" width="500">
 </p>
+<br/>
 
-  
 ## アプリケーションの機能一覧
 * Todo作成機能
 * Todo削除機能
@@ -15,11 +15,12 @@ Todoを管理するアプリケーションです。
 * ログアウト機能
 * ユーザー作成機能
 * ユーザー退会機能
-  
+<br/>
+
 ## 使用技術
 ### フロントエンド
 * React.js
-  
+
 ### バックエンド
 * Django REST framework
   
@@ -28,7 +29,8 @@ Todoを管理するアプリケーションです。
   
 ### 開発環境
 * Docker
-  
+<br/>
+
 ## 開発環境(Docker)の動かし方
 
 ### 事前に必要なこと
@@ -44,13 +46,14 @@ docker-compose up --build
 ```
 docker-compose ps
 ```
-#### Stateが"UP"になっていればOK
+<h6>Stateが"UP"になっていればOK</h6>
   
 ### アプリケーションの接続
 ```
 http://localhost/
 ```
-  
+<br/>
+
 ## 公開URL
 
 https://d6g1fi1sxdwfd.cloudfront.net/
