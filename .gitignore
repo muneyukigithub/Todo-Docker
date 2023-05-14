@@ -8,6 +8,7 @@ db.sqlite3
 settings_local.py
 __pycache__
 migrations/*
+file.log
 
 
 ## フロントエンド

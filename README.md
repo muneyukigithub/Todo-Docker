@@ -56,7 +56,7 @@ http://localhost/
 
 ## 公開URL
 
-https://d6g1fi1sxdwfd.cloudfront.net/
+https://www.todolistapp.net/
 ```
 テストユーザー：test@test.com
 パスワード：password
