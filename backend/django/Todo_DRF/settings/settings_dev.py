@@ -7,7 +7,6 @@ DEBUG = True
 # サービスを提供するドメインの設定
 ALLOWED_HOSTS = ["localhost","127.0.0.1"]
 
-
 # CookieのSameSite属性の設定
 # Noneで、オリジン間でCookieの送信が可能
 SESSION_COOKIE_SAMESITE = None

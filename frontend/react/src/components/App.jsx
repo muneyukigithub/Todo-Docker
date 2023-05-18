@@ -27,7 +27,12 @@ const App = () => {
 
                     <Routes>
                         {/* フロント画面 */}
-                        <Route path="/" element={<Front />} />
+                        {/* <Route path="/" element={<Front />} /> */}
+                        {/* メイン画面 */}
+                        <Route
+                            path="/"
+                            element={<MainLayout headerHeight={headerHeight} drawerWidth={drawerWidth} />}
+                        />
 
                         {/* ログイン画面 */}
                         <Route path="/login" element={<SignIn />} />
@@ -47,11 +52,11 @@ const App = () => {
                         {/* ユーザー退会完了画面 */}
                         <Route path="/UserDeactivateComplete" element={<UserDeactivateComplete />} />
 
-                        {/* メイン画面 */}
+                        {/* メイン画面
                         <Route
                             path="/main"
                             element={<MainLayout headerHeight={headerHeight} drawerWidth={drawerWidth} />}
-                        />
+                        /> */}
 
                         <Route path="*" element={<NotFound />} />
                     </Routes>

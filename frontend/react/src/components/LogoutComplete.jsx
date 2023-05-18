@@ -16,7 +16,7 @@ export const LogoutComplete = () => {
         >
             <Typography>ログアウトが完了しました。</Typography>
 
-            <LogoutLink to="/">{'ホームへ戻る'}</LogoutLink>
+            <LogoutLink to="/">{'メイン画面へ戻る'}</LogoutLink>
         </Box>
     );
 };

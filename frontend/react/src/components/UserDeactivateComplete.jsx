@@ -20,12 +20,12 @@ const UserDeactivateComplete = () => {
             <Typography gutterBottom>{username}</Typography>
             <Link
                 component={RouterLink}
-                to={'/main'}
+                to={'/'}
                 color="primary"
                 variant="h6"
                 sx={{ textDecoration: 'None', pt: 2 }}
             >
-                ホーム
+                メイン画面へ戻る
             </Link>
             <CssBaseline />
         </Box>

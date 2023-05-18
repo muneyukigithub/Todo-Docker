@@ -47,7 +47,7 @@ export default function SignIn() {
                 const userinfo = response.data;
                 userinfo && localStorage.setItem('userinfo', JSON.stringify(userinfo));
                 UserContext.setUser(userinfo);
-                navigate('/main');
+                navigate('/');
             }
         } catch (error) {
             setError(true);
@@ -75,10 +75,7 @@ export default function SignIn() {
                     {'ログイン'}
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                    {/* {error && <Alert severity="error" onClose={() => { setError(false) }}>
-                        ユーザ名かパスワードが間違っています
-                    </Alert>
-                    } */}
+
 
                     <TextField
                         onChange={handleChangeUser}
