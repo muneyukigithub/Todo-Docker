@@ -58,6 +58,7 @@ http://localhost/
 
 https://www.todolistapp.net/
 ```
+ログインする場合は以下のテストユーザ/パスワードを使用してください
 テストユーザー：test@test.com
 パスワード：password
 ```
